@@ -1,16 +1,13 @@
-### Hierarchical clustering with maximum cluster size
+### Hierarchical clustering with minimum and maximum cluster size
 
-max_size_clustering <- function(data, max_cluster_size = 59, min_cluster_size = 30) {
+min_max_size_clustering <- function(data, max_cluster_size = 59, min_cluster_size = 30) {
   start_time <- Sys.time()
-  maxsize <- maxsize
   i <- 2
   loopnum <- 1
   redo_clusters <- data
   dat_size <- nrow(redo_clusters)
-  saved_clusters <- data.frame(lat = as.numeric(),
-                               lon = as.numeric(),
-                               labels = as.integer(),
-                               loopnum = as.integer())
+  saved_clusters <- data.frame(matrix(ncol = (ncol(data) + 2), nrow = 0))
+  colnames(saved_clusters) <- c(colnames(data), "labels", "loopnum")
   
   while(dat_size > 0){
     treemodel <- hclust(dist(redo_clusters))
