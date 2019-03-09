@@ -1,6 +1,8 @@
 ### Hierarchical clustering with minimum and maximum cluster size
 
 min_max_size_clustering <- function(data, max_cluster_size = 59, min_cluster_size = 30) {
+  require(tidyverse)
+  require(cluster)
   start_time <- Sys.time()
   i <- 2
   loopnum <- 1
